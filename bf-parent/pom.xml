@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.huang-fei</groupId>
+    <artifactId>bf</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>bf-parent</artifactId>
+  <packaging>pom</packaging>
+  <url>http://www.huang-fei.com</url>
+  <name>parent</name>
+  <description>父模块</description>
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+        <!-- 解决maven update project 会回退到jdk1.5的问题 -->
+        <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>3.1</version>
+	        <configuration>
+		        <source>${jdk.version}</source>
+		        <target>${jdk.version}</target>
+		        <encoding>${project.build.sourceEncoding}</encoding>
+	        </configuration>
+        </plugin>
+     </plugins>
+   </build>
+   <properties>
+        <jdk.version>1.7</jdk.version>
+   		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+   </properties>
+   <modules>
+   	<module>../bf-common</module>
+   	<module>../bf-web</module>
+   </modules>
+</project>
